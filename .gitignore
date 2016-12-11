@@ -2,4 +2,5 @@
 *.gz
 *.bak
 *.log
-
+*.swp
+*.pyc

@@ -17,7 +17,14 @@ data_path = '../data/'
 observation_file = data_path + 'HilNeg 0324 -- Data.csv'
 path_dict = read.get_model(data_path + 'model2.csv')
 pathways = path_dict.keys()
-features = parser.get_features(path_dict)
+features = read.get_metabolites(path_dict)
+print len(features)
+evidence = read.metlin(observation_file)
+evidence |= read.hmdb(observation_file)
+print len(evidence)
+print len(features | evidence)
+print len(evidence - features)
+cofactors = read.get_cofactors(data_path + 'cofactors')
 
 a_ps = [Bernoulli('a_'+ str(i), p = l) for i in xrange(len(pathways))]
 

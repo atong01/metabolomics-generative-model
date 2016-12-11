@@ -1,0 +1,15 @@
+Notes
+=====
+
+Meta data:
+
+
+pathways in model       = 86
+metabolites in model    = 1591
+cofactors               = 66
+metlin                  = 107
+metlin & model          = 58
+hmdb                    = 33
+hmdb & model            = 18
+(metlin | hmdb) & model = 74
+
