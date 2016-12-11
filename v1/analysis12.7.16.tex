@@ -1,0 +1,92 @@
+\documentclass[11pt]{article}
+
+% -- Semantics stuff
+%     I defined a couple of special commands (see examples in the text below) to make
+%     writing inference rules and judgements easier.
+\newcommand{\br}[1]{\langle #1 \rangle}
+\def\Yields{\Downarrow}
+
+% -- Page size
+\textheight     9.0truein
+\textwidth      6.5truein
+\topmargin     -0.5truein
+\oddsidemargin  +0.0truein
+\evensidemargin +0.0truein
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage[mathscr]{euscript}
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\renewcommand{\theenumi}{\roman{enumi}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+
+% -- Document title (appears at top)
+\title{Metabolomics Generative Model Analysis}
+\author{Alex Tong}
+\begin{document}
+\maketitle
+
+Parameters:
+\begin{itemize}
+\item[$\lambda_p$:] Probability that a pathway is active
+\item[$\mu_0$:] Probability that a feature is present given inactive pathway
+\item[$\mu_1$:] Probability that a feature is present given active pathway
+\end{itemize}
+
+Variables:
+\begin{itemize}
+\item [$a_p$:] IRV indicating pathway $p$ activity
+\item [$b_{p,f}$:] IRV indicating feature f is associated with pathway p
+\item[$o_{p,f}$:] IRV indicating whether feature $f$ associated with pathway $p$ is present in the sample due to pathway $p$
+\item[$y_f$:] IRV indicating whether feature $f$ is present in the sample
+\item[$v_f$:] IRV (virtual evidence on feature f
+\end{itemize}
+
+Generative Model Prior:
+\begin{itemize}
+\item [$a_p$:] $Bernoulli(\lambda)$ for $p = 1 ... P$
+\item [$o_{p,f} | a_p, \mu$:] $Bernoulli(\mu_{a_p})$ for $f$ in Features($p$)
+\item [$y_f$]  $= (1 -  \prod_p (1 - o_{p,f}))$ Equivalent to logical OR
+\item [$v_f$] $= Bernoulli$(Measured P($f$))
+\end{itemize}
+
+Observation:
+\begin{itemize}
+\item [$v_f$] $ = 1$
+\end{itemize}
+
+Posterior:
+\begin{align}
+P(o | \lambda, \mu_0, \mu_1) &= \prod_p \prod_{f} (\mu_{a_p}^{o_{p,f}} (1-\mu_{a_p})^{(1-o_{p,f})})^{b_{p,f}} \\
+p(y | o) &= \prod_f y_f = \prod_f (1 - \prod_p (1 - o_{p,f})^{b_{p,f}}) \\
+p(\lambda, \mu_0, \mu_1, a, o, y) &= p(a)p(\lambda) p(\mu_0) p(\mu_1) p( o | \lambda, \mu_0, \mu_1) p(y | o) \\
+p(\lambda, \mu_0, \mu_1, a, o, y | v = \mathbf{1}) &= \frac{p(v | \lambda, \mu_0, \mu_1, a, o, y) * p(\lambda, \mu_0, \mu_1, a, o, y)}{p(v = \mathbf{1})}  \\
+&\propto p(v | y) * p(\lambda, \mu_0, \mu_1, a, o, y) 
+\end{align}
+%p(\alpha | v = \mathbf{1}) &= 
+
+Intro:
+We introduce a new model for interpreting the results of mass spectrometry based on a Bayesian network. 
+\end{document}
