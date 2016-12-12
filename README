@@ -20,4 +20,13 @@ match for this test.
 This is a baseline test for the real data so that we can compare with using the 
 additional information with metfrag data.
 
+lambda  = 0.5 prior over all pathways
+pi      = 0.1 prior probability on observing a metabolite
+
+v3
+==
+
+Incorporates soft evidence
+
+
 
