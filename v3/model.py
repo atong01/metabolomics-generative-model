@@ -4,7 +4,9 @@ import numpy as np
 import parser
 import read
 
-u = [0.01, 0.99]
+one  = 0.999
+zero = 0.001
+u = (zero, one)
 O = {}
 """
 pathways = parser.pathways()
@@ -23,9 +25,20 @@ evidence |= read.hmdb(observation_file)
 evidence -= cofactors
 features -= cofactors
 evidence &= features
-print evidence
-features = list(features)
 reverse_path_dict = read.reverse_dict(path_dict)
+
+"""NEW"""
+metfrag = read.metfrag(observation_file)
+metfrag_evidence = read.dict_of_set(read.metfrag_with_scores(observation_file, keep_zero_scores = False), metfrag & features - cofactors - evidence)
+"""END NEW"""
+
+evidence = {e : one for e in evidence}
+
+"""NEW"""
+evidence.update(metfrag_evidence)
+"""END NEW"""
+features = list(features)
+
 pi = 0.1
 
 #l = [Beta('lambda_'+p, alpha = 1, beta = 1, value = 0.5) for p in pathways]
@@ -50,16 +63,21 @@ def is_present(f_id, parents):
         float: y_f
     """
 ##should probably use log probs
-    return 0.99 if any(parents) else 0.01
+    return one if any(parents) else zero
 
 Y = [Lambda('y_' + str(f), (lambda f_id = f, parents = [O[p][f][0] for p in reverse_path_dict[f]]: is_present(f_id, parents))) for f in features]
 Y_os = [Bernoulli('Y_'+features[i], p = y) for i,y in enumerate(Y)]
-#Y_os = [Bernoulli('Y_'+str(i), p = y, value = detected[i], observed = True) for i,y in enumerate(Y)]
 
-virtual_prob = [Lambda('v_' + features[i], (lambda y = y: pi if y else 1 - pi)) for i,y in enumerate(Y_os)]
+def calc_v_prob(y, i):
+    ev = features[i] in evidence
+    if not y and not ev:
+        return 1 - pi
+    if not y and ev:
+        return (1 - pi) * (1 - evidence[features[i]])
+    if y and not ev:
+        return pi
+    if y and ev:
+        return pi * evidence[features[i]]
+
+virtual_prob = [Lambda('v_' + features[i], (lambda y = y: calc_v_prob(y,i))) for i,y in enumerate(Y_os)]
 virtual = [Bernoulli('V_'+features[i], p = virtual_prob[i], value = True, observed = True) for i in range(len(Y_os))]
-print O['cge00982']['C16591'][0].parents
-print Y[0].parents
-print Y_os[0].parents
-print virtual_prob[0].parents
-print virtual[0].parents

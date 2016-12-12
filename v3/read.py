@@ -80,6 +80,9 @@ def metfrag_with_scores(path, keep_zero_scores = True):
         to_return = dict((k,v) for k, v in to_return.iteritems() if v != 0)
     return to_return
 
+def dict_of_set(d, s):
+    """ Returns a dict with keys in set """
+    return dict((k,v) for k, v in d.iteritems() if k in s)
 
 if __name__ == "__main__":
     data = '../data/HilNeg 0324 -- Data.csv'
