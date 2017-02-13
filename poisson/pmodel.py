@@ -36,6 +36,6 @@ for feat, pathways in reverse_path_dict.iteritems():
         if feat in metfrag_evidence:
             se_count += 1
             e = metfrag_evidence[feat]
-            virtual[feat] = Bernoulli('v_' + feat, e if (g_bmp[feat] != 0) else 1 - e)
+            virtual[feat] = Bernoulli('v_' + feat, e if (g_bmp[feat] != 0) else 1 - e, value = 1, observed = True)
 
 print len(evidence), se_count, len(g_bmp)
