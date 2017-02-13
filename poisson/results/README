@@ -2,3 +2,16 @@
 Real data, only hard evidence, 10000 samples
 2.csv
 Real data, only hard evidence, 50000 samples
+3.csv
+Real data, includes soft evidence, 5000 samples
+Study cge00020 (should have turned on due to C05381) soft evidence
+C05381 metfrag score 0.75
+This is likely due the way hard evidence comes into play. We currently set any
+hard evidence as g_f = 1, however in reality it should be g_f >= 1
+Next we will try including this information via virtual nodes
+4.csv
+Real data, includes soft evidence, 5000 samples
+Used a virtual node node conditioned on g_f != 0. 
+Drove all pathway probabilities to 0.5, used 0.999 as "hard evidence", trying 0.99. Perhaps more samples???
+
+
