@@ -1,13 +1,10 @@
 import model
 import pymc
-import networkx as nx
-import matplotlib.pyplot as plt
 from pymc import MCMC
-from pymc.Matplot import plot
 M = MCMC(model)
-M.sample(iter=10000, burn=1000, thin=10)
+M.sample(iter=250, burn=50, thin=10)
 #plot(M, path='./plots')
-M.write_csv('out.csv')
+M.write_csv('quick.csv')
 #pathways = model.pathways
 #traces = {}
 #for p in pathways:

@@ -50,7 +50,7 @@
 
 \section{Background}
 
-I've been working on this project starting in February 2016 with Soha Hassoun. My contribution has been in the probabilistic model design and test. In the spring we started with a Bayesian Network designed in BayesNetToolkit
+I've been working on this project starting in February 2016 with Soha Hassoun. My contribution has been in the probabilistic model design and test. In the spring we started with a Bayesian Network designed in BayesNetToolkit. \cite{bayesnet}
 
 \section{Introduction}
 
@@ -65,10 +65,10 @@ Parameters:
 Variables:
 \begin{itemize}
 \item [$a_p$:] IRV indicating pathway $p$ activity
-\item [$b_{p,f}$:] feature f is associated with pathway p
+\item [$b_{p,f}$:] IRV indicating feature f is associated with pathway p
 \item[$o_{p,f}$:] IRV indicating whether feature $f$ associated with pathway $p$ is present in the sample due to pathway $p$
 \item[$m_f$:] IRV indicating whether feature $f$ is present in the sample
-\item[$v_f$:] IRV virtual evidence on feature f
+\item[$v_f$:] IRV (virtual evidence on feature f
 \end{itemize}
 
 Generative Model Prior:
@@ -122,8 +122,9 @@ Reasonable Values:
 Thanks to Nicholas Alden, Vlad Porokhin, Neda Hassanpour, Kyongbum Lee, Soha Hassoun who are also working on this project.
 
 \section{References}
-\begin{thebibliography}
 
+\bibliographystyle{unsrt}
+\bibliography{foo}
 
 
 \end{document}
