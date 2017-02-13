@@ -6,3 +6,5 @@
 *.pyc
 .DS_store
 venv
+plots
+*.png
