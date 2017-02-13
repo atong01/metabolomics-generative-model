@@ -34,6 +34,8 @@ def get_metabolites(path_dict):
 
 def get_column_set(path, col):
     """ Gets set of comma separated strings in column """
+    if type(path) == list:
+        return reduce(lambda x, y: x | y, [get_column_set(p, col) for p in path])
     to_return = set()
     data = []
     with open(path, 'rb') as f:
@@ -55,6 +57,15 @@ hmdb    = lambda path: get_column_set(path, 5)
 metlin  = lambda path: get_column_set(path, 7)
 metfrag = lambda path: get_column_set(path, 9)
 
+def or_scores(scores):
+    to_return = defaultdict(float)
+    for c, score_list in scores.iteritems():
+        tot = 1
+        for s in score_list:
+            tot *= (1 - float(s))
+        to_return[c] = 1 - tot
+    return to_return
+
 def metfrag_with_scores(path, keep_zero_scores = True):
     """
         Returns dict: Compound --> Score
@@ -62,6 +73,12 @@ def metfrag_with_scores(path, keep_zero_scores = True):
     """
     scores = defaultdict(list)
     to_return = defaultdict(float)
+    if type(path) == list:
+        dicts = [metfrag_with_scores(p, keep_zero_scores) for p in path]
+        for d in dicts:
+            for k, v in d.iteritems():
+                scores[k].append(v)
+        return or_scores(scores)
     with open(path, 'rb') as f:
         reader = csv.reader(f)
         for i, row in enumerate(reader):
@@ -70,15 +87,15 @@ def metfrag_with_scores(path, keep_zero_scores = True):
             for c, score in zip(*(row[9].split(','), row[10].split(','))):
                 scores[c].append(score.strip())
         del scores['']
-    for c, score_list in scores.iteritems():
-        tot = 1
-        for s in score_list:
-            tot *= (1 - float(s))
-        to_return[c] = 1 - tot
+    to_return = or_scores(scores)
 
     if not keep_zero_scores:
         to_return = dict((k,v) for k, v in to_return.iteritems() if v != 0)
     return to_return
+
+def dict_of_set(d, s):
+    """ Returns a dict with keys in set """
+    return dict((k,v) for k, v in d.iteritems() if k in s)
 
 
 if __name__ == "__main__":

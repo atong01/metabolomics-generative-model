@@ -22,8 +22,3 @@ def detected_features():
 
 def evidence():
     return [0.99, 0.01, 0.33]
-
-"""
-Real Stuff
-"""
-
