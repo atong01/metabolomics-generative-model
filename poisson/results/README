@@ -13,7 +13,10 @@ Next we will try including this information via virtual nodes
 Real data, includes soft evidence, 5000 samples
 Used a virtual node node conditioned on g_f != 0. 
 Drove all pathway probabilities to 0.5, used 0.999 as "hard evidence", trying 0.99. Perhaps more samples???
-5.csv
-Real data, includes soft evidence, 100000 samples
+5.csv -- 100000 samples
 Same parameters as 3
 This suggests that more sampling is needed, as cge00020 activated to 0.5
+6.csv -- 200000 samples
+7.csv -- 300000 samples
+8.csv -- 300000 samples
+test stability of sampling

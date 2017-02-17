@@ -6,6 +6,7 @@ import csv
 from collections import defaultdict
 
 def get_model(model_path, keep_full_path=False, cofactors = set()):
+    """ returns (dict) pathway : set(compounds) """
     with open(model_path, 'rb') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='\"')
         data = np.array([row for row in reader])
@@ -92,6 +93,25 @@ def metfrag_with_scores(path, keep_zero_scores = True):
     if not keep_zero_scores:
         to_return = dict((k,v) for k, v in to_return.iteritems() if v != 0)
     return to_return
+
+def clean_sets():
+    """ Gets cleaned sets of evidence and metfrag """
+    data_path = '../data/'
+    observation_file = data_path + 'HilNeg 0324 -- Data.csv'
+    cofactors = get_cofactors(data_path + 'cofactors')
+    path_dict = get_model(data_path + 'model2.csv', cofactors = cofactors)
+    pathways = path_dict.keys()
+    features = get_metabolites(path_dict)
+    evidence = metlin(observation_file)
+    evidence |= hmdb(observation_file)
+    evidence -= cofactors
+    features -= cofactors
+    evidence &= features
+    reverse_path_dict = reverse_dict(path_dict)
+    mf = metfrag(observation_file)
+    metfrag_evidence = dict_of_set(metfrag_with_scores(observation_file, keep_zero_scores = False), mf & features - cofactors - evidence)
+    return evidence, metfrag_evidence
+
 
 def dict_of_set(d, s):
     """ Returns a dict with keys in set """
