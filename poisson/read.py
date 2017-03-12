@@ -112,11 +112,27 @@ def clean_sets():
     metfrag_evidence = dict_of_set(metfrag_with_scores(observation_file, keep_zero_scores = False), mf & features - cofactors - evidence)
     return evidence, metfrag_evidence
 
+def get_all_sets():
+    data_path = '../data/'
+    observation_file = data_path + 'HilNeg 0324 -- Data.csv'
+    cofactors = get_cofactors(data_path + 'cofactors')
+    path_dict = get_model(data_path + 'model2.csv', cofactors = cofactors)
+    pathways = path_dict.keys()
+    features = get_metabolites(path_dict)
+    evidence = metlin(observation_file)
+    evidence |= hmdb(observation_file)
+    evidence -= cofactors
+    features -= cofactors
+    evidence &= features
+    reverse_path_dict = reverse_dict(path_dict)
+    mf = metfrag(observation_file)
+    metfrag_evidence = dict_of_set(metfrag_with_scores(observation_file, keep_zero_scores = False), mf & features - cofactors - evidence)
+    evidence = {e : 1 for e in evidence}
+    return pathways, evidence, path_dict, reverse_path_dict, metfrag_evidence
 
 def dict_of_set(d, s):
     """ Returns a dict with keys in set """
     return dict((k,v) for k, v in d.iteritems() if k in s)
-
 
 if __name__ == "__main__":
     data = '../data/HilNeg 0324 -- Data.csv'
