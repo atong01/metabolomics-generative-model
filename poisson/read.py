@@ -128,7 +128,7 @@ def get_all_sets():
     mf = metfrag(observation_file)
     metfrag_evidence = dict_of_set(metfrag_with_scores(observation_file, keep_zero_scores = False), mf & features - cofactors - evidence)
     evidence = {e : 1 for e in evidence}
-    return pathways, evidence, path_dict, reverse_path_dict, metfrag_evidence
+    return pathways, features, path_dict, reverse_path_dict, evidence, metfrag_evidence
 
 def dict_of_set(d, s):
     """ Returns a dict with keys in set """
@@ -138,6 +138,6 @@ if __name__ == "__main__":
     data = '../data/HilNeg 0324 -- Data.csv'
     d = get_model('../data/model2.csv')
     mets = get_metabolites(d)
-    print len(metfrag_with_scores(data))
-    print len(metfrag_with_scores(data, keep_zero_scores = False))
+    #print len(metfrag_with_scores(data))
+    #print len(metfrag_with_scores(data, keep_zero_scores = False))
     #print sorted(list((hmdb(data) | metlin(data)) & mets))

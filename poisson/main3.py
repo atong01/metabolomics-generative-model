@@ -11,7 +11,7 @@ def get_coeffs(map_):
     return [{str(v) : v.value} for v in map_.variables if str(v).startswith('p') or str(v).startswith('b') or str(v).startswith('e')]
 
 #print get_coeffs(MAP)
-M.sample(iter=50000, burn=250, thin=100)
+M.sample(iter=10000, burn=250, thin=10)
 #plot(M, path='./plots')
 M.write_csv('out.csv')
 #pathways = model.pathways

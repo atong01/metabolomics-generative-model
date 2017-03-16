@@ -57,24 +57,24 @@ def summarize(pathway):
         observed = ((metlin | hmdb | metfrag) & features) - cofactors
         reverse_path_dict = read.reverse_dict(path_dict)
         for compound in observed & cge:
-            print compound, len(reverse_path_dict[compound])
+            print (compound, len(reverse_path_dict[compound]))
     compounds = path_dict[pathway]
-    print "Prob(C05381)", read.metfrag_with_scores(list(paths))['C05381']
-    print pathway, len(compounds - cofactors)
-    print "Unobserved:"
+    print ("Prob(C05381)", read.metfrag_with_scores(list(paths))['C05381'])
+    print (pathway, len(compounds - cofactors))
+    print ("Unobserved:")
     stats(pathway, compounds - cofactors, set())
-    print "Full Stats:"
+    print ("Full Stats:")
     stats(pathway, all[0], all[1], all[2])
-    print "Hard Stats:"
+    print ("Hard Stats:")
     stats(pathway, all[0], all[1], set())
     return all
 
 def summarize_compound(compound):
     path_dict   = read.get_model(data_path + 'model2.csv')
     reverse_path_dict = read.reverse_dict(path_dict)
-    print "Compound", compound, "has pathways:"
+    print ("Compound", compound, "has pathways:")
     for path in sorted(reverse_path_dict[compound]):
-        print path
+        print (path)
 
 
 #POST ANALYZE
@@ -84,7 +84,7 @@ class Posterior():
         self.int = {}
         self.mets = {}
         MAPPING = {'p_' : self.cge, 'b' : self.int, 'g' : self.mets }
-        with open(path, 'rb') as f:
+        with open(path, 'r') as f:
             reader = csv.reader(f)
             data = []
             for i, row in enumerate(reader):
@@ -101,7 +101,7 @@ class Posterior():
             diffs[pathway] = abs(mean - other_mean)
         sorted_diffs = sorted(diffs.items(), key=operator.itemgetter(1), reverse=True)
         for pathway, diff in sorted_diffs[:10]:
-            print pathway, self.cge[pathway], other.cge[pathway]
+            print (pathway, self.cge[pathway], other.cge[pathway])
         return sorted_diffs
 
 def list_range(l):
@@ -127,22 +127,25 @@ def compare_pathway_probs(posteriors, threshold = 0.5):
     all_paths = construct_union(posteriors)[0]
     all_ranges = {k : list_range(l) for k,l in all_paths.iteritems()}
     top_ranges = dict_sort_by_value(all_ranges, reverse=True)
-    print "top ranges"
+    print ("top ranges")
     to_return = []
     for p,r in top_ranges:
         if r > threshold:
             to_return.append((p, r))
-            print p, r
+            print (p, r)
     return all_paths, to_return
 
 if __name__ == '__main__':
     #summarize('cge00524')
     #summarize('cge00020')
     #summarize('cge01230')
-    #summarize('cge00750')
-    p5 = Posterior('results/5.csv') 
-    p6 = Posterior('results/6.csv')
-    p5.compare_pathway_probs(p6)
+    #summarize('cge00561')
+    #summarize('cge00052')
+    summarize('cge00350')
+    #p5 = Posterior('results/5.csv') 
+    #p6 = Posterior('results/6.csv')
+    #p5.compare_pathway_probs(p6)
 
     #summarize_compound('C00158')
+    summarize_compound('C00025')
 
