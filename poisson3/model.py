@@ -1,65 +1,54 @@
-from pymc import Bernoulli, Lambda, Beta
-import pymc
+from pymc3 import Bernoulli, Gamma, Poisson, Beta, Model
+import pymc3
 import numpy as np
-import parser
+import gen
 import read
+import math
 
-u = [0.01, 0.99]
-O = {}
-"""
-pathways = parser.pathways()
-features = parser.features()
-detected = parser.detected_features()
-evidence = parser.evidence()
-"""
-data_path = '../data/'
-observation_file = data_path + 'HilNeg 0324 -- Data.csv'
-cofactors = read.get_cofactors(data_path + 'cofactors')
-path_dict = read.get_model(data_path + 'model2.csv', cofactors = cofactors)
-pathways = path_dict.keys()
-features = read.get_metabolites(path_dict)
-evidence = read.metlin(observation_file)
-evidence |= read.hmdb(observation_file)
-evidence -= cofactors
-features -= cofactors
-evidence &= features
-print evidence
-features = list(features)
-reverse_path_dict = read.reverse_dict(path_dict)
-pi = 0.1
+FAKE_DATA = False
+epsilon = 1e-10 # prevents log(0)
 
-#l = [Beta('lambda_'+p, alpha = 1, beta = 1, value = 0.5) for p in pathways]
-l = 0.5
-a_ps = [Bernoulli(path, p = l) for i, path in enumerate(pathways)]
-#a_ps = [Bernoulli(path, p = l[i]) for i, path in enumerate(pathways)]
+if FAKE_DATA:
+    faker = gen.Test_Generator()
+    data = faker.gen('abc3')
+else:
+    data = read.get_all_sets()
 
-for i, p in enumerate(pathways):
-    O[p] = {}
-    active_path = (lambda x = a_ps[i]: u[1] if x else u[0])
-    u_ap = Lambda('u_ap' + str(i), active_path)
-    for f in path_dict[p]:
-        O[p][f]= (Bernoulli('o_{p=' + p + ',f=' + f + '}', p = u_ap), u_ap)
 
-def is_present(f_id, parents):
-    """ Calculates y_f, the probability that a features appears in our sample.
-    Args:
-        f_id (int): feature id
-        O (dict): O is a dict of dicts representing probability of each feature
-            in each pathway
-    Returns:
-        float: y_f
-    """
-##should probably use log probs
-    return 0.99 if any(parents) else 0.01
+pathways, features, path_dict, reverse_path_dict, evidence, metfrag_evidence = data
+for c,v in evidence.items():
+    print (c,v )
+for c,v in metfrag_evidence.items():
+    print (c,v )
+print ("num_pathways:", len(pathways))
+print ("num_features:", len(features))
+print ("num_evidence:", len(evidence))
+print ("num_metfrag: ", len(metfrag_evidence))
+rate_prior = 0.5
+import theano.tensor as T
+#eps = Beta('eps', 0.005, 1)
+model = Model()
+with model:
+    eps = 0.0001
+    ap =  {p : Gamma('p_' + p, rate_prior, 1) for p in pathways}
+    bmp = {p : {feat : Gamma('b_{' + p + ',' + feat + '}', ap[p],1) for feat in path_dict[p]} for p in pathways}
+    y_bmp = {}
+    g = {}
 
-Y = [Lambda('y_' + str(f), (lambda f_id = f, parents = [O[p][f][0] for p in reverse_path_dict[f]]: is_present(f_id, parents))) for f in features]
-Y_os = [Bernoulli('Y_'+features[i], p = y) for i,y in enumerate(Y)]
-#Y_os = [Bernoulli('Y_'+str(i), p = y, value = detected[i], observed = True) for i,y in enumerate(Y)]
-
-virtual_prob = [Lambda('v_' + features[i], (lambda y = y: pi if y else 1 - pi)) for i,y in enumerate(Y_os)]
-virtual = [Bernoulli('V_'+features[i], p = virtual_prob[i], value = True, observed = True) for i in range(len(Y_os))]
-print O['cge00982']['C16591'][0].parents
-print Y[0].parents
-print Y_os[0].parents
-print virtual_prob[0].parents
-print virtual[0].parents
+    def logp_f(f, b, eps):
+        if f in evidence:
+            return T.log(1 - math.e ** (-1 * b) + epsilon)
+        if f in metfrag_evidence:
+            a_p = (1.0 / (1 - metfrag_evidence[f])) - 1
+            return a_p * T.log(1 - math.e ** (-1 * b) + epsilon) - b
+        return T.log(eps) - b
+    psi = {}
+    for feat, pathways in reverse_path_dict.items():
+        y_bmp[feat] = sum([bmp[pname][feat] for pname in pathways])
+        g[feat] = Bernoulli('g_' + feat, 1 - math.e ** (-y_bmp[feat]))
+        psi[feat] = pymc3.Potential('psi_' + feat, logp_f(feat, y_bmp[feat], eps))
+if __name__ == '__main__':
+    n=1000
+    with model:
+        trace = pymc3.sample(n)
+        pymc3.summary(trace)

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from pymc import MCMC
 from pymc.Matplot import plot
 M = MCMC(pmodel)
-M.sample(iter=10000, burn=250, thin=10)
+M.sample(iter=300000, burn=250, thin=10)
 #plot(M, path='./plots')
 M.write_csv('out.csv')
 #pathways = model.pathways

@@ -16,10 +16,6 @@ else:
 
 
 pathways, features, path_dict, reverse_path_dict, evidence, metfrag_evidence = data
-for c,v in evidence.items():
-    print (c,v )
-for c,v in metfrag_evidence.items():
-    print (c,v)
 print ("num_pathways:", len(pathways))
 print ("num_features:", len(features))
 print ("num_evidence:", len(evidence))
