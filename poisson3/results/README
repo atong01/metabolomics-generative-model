@@ -1,0 +1,27 @@
+1.csv
+Real data, only hard evidence, 10000 samples
+2.csv
+Real data, only hard evidence, 50000 samples
+3.csv
+Real data, includes soft evidence, 5000 samples
+Study cge00020 (should have turned on due to C05381) soft evidence
+C05381 metfrag score 0.75
+This is likely due the way hard evidence comes into play. We currently set any
+hard evidence as g_f = 1, however in reality it should be g_f >= 1
+Next we will try including this information via virtual nodes
+4.csv
+Real data, includes soft evidence, 5000 samples
+Used a virtual node node conditioned on g_f != 0. 
+Drove all pathway probabilities to 0.5, used 0.999 as "hard evidence", trying 0.99. Perhaps more samples???
+5.csv -- 100000 samples
+Same parameters as 3
+This suggests that more sampling is needed, as cge00020 activated to 0.5
+6.csv -- 200000 samples
+7.csv -- 300000 samples
+8.csv -- 300000 samples
+test stability of sampling
+
+9.csv -- New continous model with soft evidence 10000 samples. Using NUTS sampler
+would definitly help in this case. Note that this uses "Activity levels"
+So is not compareable to previous samples.
+

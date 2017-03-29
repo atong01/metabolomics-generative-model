@@ -5,24 +5,29 @@ import gen
 import read
 import math
 
-FAKE_DATA = False
+FAKE_DATA = True
 epsilon = 1e-10 # prevents log(0)
 
 if FAKE_DATA:
     faker = gen.Test_Generator()
-    data = faker.gen('soft1')
+    data = faker.gen('abc3')
 else:
     data = read.get_all_sets()
 
 
 pathways, features, path_dict, reverse_path_dict, evidence, metfrag_evidence = data
+for c,v in evidence.iteritems():
+    print c,v 
+for c,v in metfrag_evidence.iteritems():
+    print c,v 
 print "num_pathways:", len(pathways)
 print "num_features:", len(features)
 print "num_evidence:", len(evidence)
 print "num_metfrag: ", len(metfrag_evidence)
 rate_prior = 0.5
 
-eps = Beta('eps', 0.005, 1)
+#eps = Beta('eps', 0.005, 1)
+eps = 0.0001
 ap =  {p : Gamma('p_' + p, rate_prior, 1) for p in pathways}
 bmp = {p : {feat : Gamma('b_{' + p + ',' + feat + '}', ap[p],1) for feat in path_dict[p]} for p in pathways}
 y_bmp = {}

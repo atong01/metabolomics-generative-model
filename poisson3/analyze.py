@@ -90,13 +90,14 @@ class Posterior():
             for i, row in enumerate(reader):
                 data.append([r.strip() for r in row])
             for row in data:
-                for name, key in MAPPING.iteritems():
+                for name, key in MAPPING.items():
                     if row[0].startswith(name):
                         key[row[0]] = float(row[1 if name != 'b' else 2])
                         continue
-    def compare_pathway_probs(self, other):
+        print (len(self.cge), len(self.int),len(self.mets))
+    def compare_pathway_probs(self, other = None):
         diffs = {}
-        for pathway, mean in self.cge.iteritems():
+        for pathway, mean in self.cge.items():
             other_mean = other.cge[pathway]
             diffs[pathway] = abs(mean - other_mean)
         sorted_diffs = sorted(diffs.items(), key=operator.itemgetter(1), reverse=True)
@@ -111,9 +112,9 @@ def construct_union(posteriors):
     all_paths = defaultdict(list)
     all_mets = defaultdict(list)
     for p in posteriors:
-        for pathway, mean in p.cge.iteritems():
+        for pathway, mean in p.cge.items():
             all_paths[pathway].append(mean)
-        for met, mean in p.mets.iteritems():
+        for met, mean in p.mets.items():
             all_mets[met].append(mean)
     return all_paths, all_mets
 
@@ -124,8 +125,11 @@ def compare_pathway_probs(posteriors, threshold = 0.5):
     """ Takes a list of posterior objects and performs analysis on their pathway
         probabilities.
     """
+    if len(posteriors) < 2:
+        print "Too few posteriors. Exiting."
+        return
     all_paths = construct_union(posteriors)[0]
-    all_ranges = {k : list_range(l) for k,l in all_paths.iteritems()}
+    all_ranges = {k : list_range(l) for k,l in all_paths.items()}
     top_ranges = dict_sort_by_value(all_ranges, reverse=True)
     print ("top ranges")
     to_return = []
@@ -137,11 +141,10 @@ def compare_pathway_probs(posteriors, threshold = 0.5):
 
 if __name__ == '__main__':
     #summarize('cge00524')
-    #summarize('cge00010')
-    summarize('cge00020')
+    #summarize('cge00020')
     #summarize('cge01230')
-    #summarize('cge00561')
-    #summarize('cge00052')
+    summarize('cge00561')
+    summarize('cge00052')
     #summarize('cge00350')
     #p5 = Posterior('results/5.csv') 
     #p6 = Posterior('results/6.csv')
