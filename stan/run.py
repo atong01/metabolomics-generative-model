@@ -1,6 +1,13 @@
 import pystan as ps
 import read
 import numpy as np
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('chains', action='store', type=int)
+parser.add_argument('iters', action='store', type=int)
+r = parser.parse_args()
+print (r)
 
 paths, mets, met_mask, y = read.get_matrix_form(True)
 P,M = met_mask.shape
@@ -25,9 +32,7 @@ test_data_cont = {  'P': 2,
 
 #sfit = ps.stan(file='model_continuous.stan', iter = 30000, data=test_data_cont)
 sfit = ps.stan(file='model_continuous.stan', 
-               iter = 200000,
-               sample_file = 'params',
-               chains = 16,
+               iter = r.iters,
+               chains = r.chains,
                data=data_cont)
-f = open('out8', 'w')
-print(sfit, file = f)
+print(sfit)
