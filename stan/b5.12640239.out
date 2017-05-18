@@ -1,0 +1,1 @@
+Namespace(MODEL='model.stan', chains=16, iters=200000, test=False)

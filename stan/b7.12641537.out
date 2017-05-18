@@ -1,0 +1,3 @@
+Namespace(MODEL='model_continuous.stan', chains=8, iters=2000, num_pathways=10, test=False)
+Namespace(MODEL='model_continuous.stan', chains=8, iters=2000, num_pathways=20, test=False)
+Namespace(MODEL='model_continuous.stan', chains=8, iters=2000, num_pathways=30, test=False)

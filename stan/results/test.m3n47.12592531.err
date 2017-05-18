@@ -1,0 +1,27 @@
+INFO:pystan:COMPILING THE C++ CODE FOR MODEL anon_model_97bf4e58a610a19c379ae41f75bc9d35 NOW.
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception thrown at line 23: gamma_log: Shape parameter[3] is 0, but must be > 0!
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception thrown at line 23: gamma_log: Shape parameter[3] is 0, but must be > 0!
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception thrown at line 23: gamma_log: Shape parameter[3] is 0, but must be > 0!
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+INFO:pystan:COMPILING THE C++ CODE FOR MODEL anon_model_97bf4e58a610a19c379ae41f75bc9d35 NOW.
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception thrown at line 23: gamma_log: Inverse scale parameter[1] is 0, but must be > 0!
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception thrown at line 23: gamma_log: Shape parameter[1] is 0, but must be > 0!
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+

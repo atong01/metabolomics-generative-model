@@ -1,0 +1,305 @@
+Namespace(chains=8, iters=10000)
+Iteration:    1 / 10000 [  0%]  (Warmup) (Chain 1)
+Iteration:    1 / 10000 [  0%]  (Warmup) (Chain 7)
+Iteration:    1 / 10000 [  0%]  (Warmup) (Chain 2)
+Iteration:    1 / 10000 [  0%]  (Warmup) (Chain 3)
+Iteration:    1 / 10000 [  0%]  (Warmup) (Chain 0)
+Iteration:    1 / 10000 [  0%]  (Warmup) (Chain 4)
+Iteration:    1 / 10000 [  0%]  (Warmup) (Chain 5)
+Iteration:    1 / 10000 [  0%]  (Warmup) (Chain 6)
+Iteration: 1000 / 10000 [ 10%]  (Warmup) (Chain 6)
+Iteration: 1000 / 10000 [ 10%]  (Warmup) (Chain 7)
+Iteration: 1000 / 10000 [ 10%]  (Warmup) (Chain 2)
+Iteration: 1000 / 10000 [ 10%]  (Warmup) (Chain 3)
+Iteration: 1000 / 10000 [ 10%]  (Warmup) (Chain 5)
+Iteration: 1000 / 10000 [ 10%]  (Warmup) (Chain 1)
+Iteration: 2000 / 10000 [ 20%]  (Warmup) (Chain 2)
+Iteration: 2000 / 10000 [ 20%]  (Warmup) (Chain 6)
+Iteration: 2000 / 10000 [ 20%]  (Warmup) (Chain 7)
+Iteration: 2000 / 10000 [ 20%]  (Warmup) (Chain 3)
+Iteration: 2000 / 10000 [ 20%]  (Warmup) (Chain 5)
+Iteration: 2000 / 10000 [ 20%]  (Warmup) (Chain 1)
+Iteration: 1000 / 10000 [ 10%]  (Warmup) (Chain 0)
+Iteration: 1000 / 10000 [ 10%]  (Warmup) (Chain 4)
+Iteration: 3000 / 10000 [ 30%]  (Warmup) (Chain 6)
+Iteration: 3000 / 10000 [ 30%]  (Warmup) (Chain 2)
+Iteration: 3000 / 10000 [ 30%]  (Warmup) (Chain 7)
+Iteration: 3000 / 10000 [ 30%]  (Warmup) (Chain 5)
+Iteration: 3000 / 10000 [ 30%]  (Warmup) (Chain 3)
+Iteration: 3000 / 10000 [ 30%]  (Warmup) (Chain 1)
+Iteration: 4000 / 10000 [ 40%]  (Warmup) (Chain 6)
+Iteration: 4000 / 10000 [ 40%]  (Warmup) (Chain 7)
+Iteration: 4000 / 10000 [ 40%]  (Warmup) (Chain 2)
+Iteration: 4000 / 10000 [ 40%]  (Warmup) (Chain 3)
+Iteration: 4000 / 10000 [ 40%]  (Warmup) (Chain 5)
+Iteration: 4000 / 10000 [ 40%]  (Warmup) (Chain 1)
+Iteration: 2000 / 10000 [ 20%]  (Warmup) (Chain 4)
+Iteration: 2000 / 10000 [ 20%]  (Warmup) (Chain 0)
+Iteration: 5000 / 10000 [ 50%]  (Warmup) (Chain 6)
+Iteration: 5001 / 10000 [ 50%]  (Sampling) (Chain 6)
+Iteration: 5000 / 10000 [ 50%]  (Warmup) (Chain 7)
+Iteration: 5000 / 10000 [ 50%]  (Warmup) (Chain 2)
+Iteration: 5001 / 10000 [ 50%]  (Sampling) (Chain 7)
+Iteration: 5001 / 10000 [ 50%]  (Sampling) (Chain 2)
+Iteration: 5000 / 10000 [ 50%]  (Warmup) (Chain 3)
+Iteration: 5001 / 10000 [ 50%]  (Sampling) (Chain 3)
+Iteration: 5000 / 10000 [ 50%]  (Warmup) (Chain 5)
+Iteration: 5001 / 10000 [ 50%]  (Sampling) (Chain 5)
+Iteration: 5000 / 10000 [ 50%]  (Warmup) (Chain 1)
+Iteration: 5001 / 10000 [ 50%]  (Sampling) (Chain 1)
+Iteration: 6000 / 10000 [ 60%]  (Sampling) (Chain 6)
+Iteration: 6000 / 10000 [ 60%]  (Sampling) (Chain 1)
+Iteration: 6000 / 10000 [ 60%]  (Sampling) (Chain 2)
+Iteration: 6000 / 10000 [ 60%]  (Sampling) (Chain 3)
+Iteration: 6000 / 10000 [ 60%]  (Sampling) (Chain 5)
+Iteration: 6000 / 10000 [ 60%]  (Sampling) (Chain 7)
+Iteration: 3000 / 10000 [ 30%]  (Warmup) (Chain 0)
+Iteration: 3000 / 10000 [ 30%]  (Warmup) (Chain 4)
+Iteration: 7000 / 10000 [ 70%]  (Sampling) (Chain 6)
+Iteration: 7000 / 10000 [ 70%]  (Sampling) (Chain 1)
+Iteration: 7000 / 10000 [ 70%]  (Sampling) (Chain 2)
+Iteration: 7000 / 10000 [ 70%]  (Sampling) (Chain 3)
+Iteration: 7000 / 10000 [ 70%]  (Sampling) (Chain 5)
+Iteration: 7000 / 10000 [ 70%]  (Sampling) (Chain 7)
+Iteration: 8000 / 10000 [ 80%]  (Sampling) (Chain 6)
+Iteration: 8000 / 10000 [ 80%]  (Sampling) (Chain 1)
+Iteration: 8000 / 10000 [ 80%]  (Sampling) (Chain 2)
+Iteration: 8000 / 10000 [ 80%]  (Sampling) (Chain 5)
+Iteration: 8000 / 10000 [ 80%]  (Sampling) (Chain 3)
+Iteration: 4000 / 10000 [ 40%]  (Warmup) (Chain 0)
+Iteration: 8000 / 10000 [ 80%]  (Sampling) (Chain 7)
+Iteration: 4000 / 10000 [ 40%]  (Warmup) (Chain 4)
+Iteration: 9000 / 10000 [ 90%]  (Sampling) (Chain 6)
+Iteration: 9000 / 10000 [ 90%]  (Sampling) (Chain 1)
+Iteration: 9000 / 10000 [ 90%]  (Sampling) (Chain 2)
+Iteration: 9000 / 10000 [ 90%]  (Sampling) (Chain 5)
+Iteration: 9000 / 10000 [ 90%]  (Sampling) (Chain 3)
+Iteration: 9000 / 10000 [ 90%]  (Sampling) (Chain 7)
+Iteration: 5000 / 10000 [ 50%]  (Warmup) (Chain 4)
+Iteration: 5001 / 10000 [ 50%]  (Sampling) (Chain 4)
+Iteration: 5000 / 10000 [ 50%]  (Warmup) (Chain 0)
+Iteration: 5001 / 10000 [ 50%]  (Sampling) (Chain 0)
+Iteration: 10000 / 10000 [100%]  (Sampling) (Chain 6)
+# 
+#  Elapsed Time: 0.26 seconds (Warm-up)
+#                0.25 seconds (Sampling)
+#                0.51 seconds (Total)
+# 
+Iteration: 10000 / 10000 [100%]  (Sampling) (Chain 1)
+# 
+#  Elapsed Time: 0.27 seconds (Warm-up)
+#                0.25 seconds (Sampling)
+#                0.52 seconds (Total)
+# 
+Iteration: 10000 / 10000 [100%]  (Sampling) (Chain 2)
+# 
+#  Elapsed Time: 0.27 seconds (Warm-up)
+#                0.26 seconds (Sampling)
+#                0.53 seconds (Total)
+# 
+Iteration: 10000 / 10000 [100%]  (Sampling) (Chain 5)
+# 
+#  Elapsed Time: 0.27 seconds (Warm-up)
+#                0.26 seconds (Sampling)
+#                0.53 seconds (Total)
+# 
+Iteration: 10000 / 10000 [100%]  (Sampling) (Chain 3)
+# 
+#  Elapsed Time: 0.26 seconds (Warm-up)
+#                0.27 seconds (Sampling)
+#                0.53 seconds (Total)
+# 
+Iteration: 6000 / 10000 [ 60%]  (Sampling) (Chain 4)
+Iteration: 10000 / 10000 [100%]  (Sampling) (Chain 7)
+# 
+#  Elapsed Time: 0.27 seconds (Warm-up)
+#                0.28 seconds (Sampling)
+#                0.55 seconds (Total)
+# 
+Iteration: 6000 / 10000 [ 60%]  (Sampling) (Chain 0)
+Iteration: 7000 / 10000 [ 70%]  (Sampling) (Chain 4)
+Iteration: 7000 / 10000 [ 70%]  (Sampling) (Chain 0)
+Iteration: 8000 / 10000 [ 80%]  (Sampling) (Chain 4)
+Iteration: 8000 / 10000 [ 80%]  (Sampling) (Chain 0)
+Iteration: 9000 / 10000 [ 90%]  (Sampling) (Chain 4)
+Iteration: 9000 / 10000 [ 90%]  (Sampling) (Chain 0)
+Iteration: 10000 / 10000 [100%]  (Sampling) (Chain 4)
+# 
+#  Elapsed Time: 0.27 seconds (Warm-up)
+#                0.25 seconds (Sampling)
+#                0.52 seconds (Total)
+# 
+Iteration: 10000 / 10000 [100%]  (Sampling) (Chain 0)
+# 
+#  Elapsed Time: 0.27 seconds (Warm-up)
+#                0.27 seconds (Sampling)
+#                0.54 seconds (Total)
+# 
+Inference for Stan model: anon_model_97bf4e58a610a19c379ae41f75bc9d35.
+8 chains, each with iter=10000; warmup=5000; thin=1; 
+post-warmup draws per chain=5000, total post-warmup draws=40000.
+
+           mean se_mean     sd   2.5%    25%    50%    75%  97.5%  n_eff   Rhat
+k[0]       0.08  3.6e-4   0.06   0.01   0.04   0.07   0.11   0.23  27174    1.0
+k[1]       0.95    0.05   1.38   0.14    0.4   0.63   1.03   3.87    808   1.01
+theta[0]  58.72    0.48  74.73   1.46  10.97  31.19  77.34 265.84  23852    1.0
+theta[1]  53.77    0.48   72.7   0.84   7.77  26.07  70.45 262.58  23229    1.0
+theta[2]  92.17    0.48  95.91   1.65  24.43  61.83 127.63 353.23  40000    1.0
+lp__      14.43    0.01   1.55  10.54  13.65  14.75  15.55  16.47  13893    1.0
+
+Samples were drawn using NUTS at Fri Apr 14 12:54:54 2017.
+For each parameter, n_eff is a crude measure of effective sample size,
+and Rhat is the potential scale reduction factor on split chains (at 
+convergence, Rhat=1).
+Iteration:     1 / 100000 [  0%]  (Warmup) (Chain 1)
+Iteration:     1 / 100000 [  0%]  (Warmup) (Chain 3)
+Iteration:     1 / 100000 [  0%]  (Warmup) (Chain 0)
+Iteration:     1 / 100000 [  0%]  (Warmup) (Chain 6)
+Iteration:     1 / 100000 [  0%]  (Warmup) (Chain 5)
+Iteration:     1 / 100000 [  0%]  (Warmup) (Chain 7)
+Iteration:     1 / 100000 [  0%]  (Warmup) (Chain 2)
+Iteration:     1 / 100000 [  0%]  (Warmup) (Chain 4)
+Iteration: 10000 / 100000 [ 10%]  (Warmup) (Chain 1)
+Iteration: 10000 / 100000 [ 10%]  (Warmup) (Chain 3)
+Iteration: 10000 / 100000 [ 10%]  (Warmup) (Chain 6)
+Iteration: 10000 / 100000 [ 10%]  (Warmup) (Chain 5)
+Iteration: 10000 / 100000 [ 10%]  (Warmup) (Chain 7)
+Iteration: 10000 / 100000 [ 10%]  (Warmup) (Chain 2)
+Iteration: 10000 / 100000 [ 10%]  (Warmup) (Chain 0)
+Iteration: 20000 / 100000 [ 20%]  (Warmup) (Chain 1)
+Iteration: 20000 / 100000 [ 20%]  (Warmup) (Chain 6)
+Iteration: 20000 / 100000 [ 20%]  (Warmup) (Chain 3)
+Iteration: 20000 / 100000 [ 20%]  (Warmup) (Chain 7)
+Iteration: 20000 / 100000 [ 20%]  (Warmup) (Chain 5)
+Iteration: 20000 / 100000 [ 20%]  (Warmup) (Chain 2)
+Iteration: 10000 / 100000 [ 10%]  (Warmup) (Chain 4)
+Iteration: 30000 / 100000 [ 30%]  (Warmup) (Chain 1)
+Iteration: 30000 / 100000 [ 30%]  (Warmup) (Chain 6)
+Iteration: 30000 / 100000 [ 30%]  (Warmup) (Chain 3)
+Iteration: 30000 / 100000 [ 30%]  (Warmup) (Chain 7)
+Iteration: 30000 / 100000 [ 30%]  (Warmup) (Chain 5)
+Iteration: 30000 / 100000 [ 30%]  (Warmup) (Chain 2)
+Iteration: 40000 / 100000 [ 40%]  (Warmup) (Chain 6)
+Iteration: 40000 / 100000 [ 40%]  (Warmup) (Chain 3)
+Iteration: 40000 / 100000 [ 40%]  (Warmup) (Chain 1)
+Iteration: 40000 / 100000 [ 40%]  (Warmup) (Chain 7)
+Iteration: 40000 / 100000 [ 40%]  (Warmup) (Chain 5)
+Iteration: 20000 / 100000 [ 20%]  (Warmup) (Chain 4)
+Iteration: 40000 / 100000 [ 40%]  (Warmup) (Chain 2)
+Iteration: 20000 / 100000 [ 20%]  (Warmup) (Chain 0)
+Iteration: 50000 / 100000 [ 50%]  (Warmup) (Chain 6)
+Iteration: 50001 / 100000 [ 50%]  (Sampling) (Chain 6)
+Iteration: 50000 / 100000 [ 50%]  (Warmup) (Chain 3)
+Iteration: 50001 / 100000 [ 50%]  (Sampling) (Chain 3)
+Iteration: 50000 / 100000 [ 50%]  (Warmup) (Chain 7)
+Iteration: 50001 / 100000 [ 50%]  (Sampling) (Chain 7)
+Iteration: 50000 / 100000 [ 50%]  (Warmup) (Chain 5)
+Iteration: 50001 / 100000 [ 50%]  (Sampling) (Chain 5)
+Iteration: 50000 / 100000 [ 50%]  (Warmup) (Chain 1)
+Iteration: 50001 / 100000 [ 50%]  (Sampling) (Chain 1)
+Iteration: 50000 / 100000 [ 50%]  (Warmup) (Chain 2)
+Iteration: 50001 / 100000 [ 50%]  (Sampling) (Chain 2)
+Iteration: 60000 / 100000 [ 60%]  (Sampling) (Chain 2)
+Iteration: 60000 / 100000 [ 60%]  (Sampling) (Chain 3)
+Iteration: 60000 / 100000 [ 60%]  (Sampling) (Chain 6)
+Iteration: 60000 / 100000 [ 60%]  (Sampling) (Chain 5)
+Iteration: 60000 / 100000 [ 60%]  (Sampling) (Chain 7)
+Iteration: 30000 / 100000 [ 30%]  (Warmup) (Chain 4)
+Iteration: 30000 / 100000 [ 30%]  (Warmup) (Chain 0)
+Iteration: 60000 / 100000 [ 60%]  (Sampling) (Chain 1)
+Iteration: 70000 / 100000 [ 70%]  (Sampling) (Chain 2)
+Iteration: 70000 / 100000 [ 70%]  (Sampling) (Chain 3)
+Iteration: 70000 / 100000 [ 70%]  (Sampling) (Chain 7)
+Iteration: 70000 / 100000 [ 70%]  (Sampling) (Chain 5)
+Iteration: 70000 / 100000 [ 70%]  (Sampling) (Chain 6)
+Iteration: 70000 / 100000 [ 70%]  (Sampling) (Chain 1)
+Iteration: 80000 / 100000 [ 80%]  (Sampling) (Chain 2)
+Iteration: 80000 / 100000 [ 80%]  (Sampling) (Chain 3)
+Iteration: 80000 / 100000 [ 80%]  (Sampling) (Chain 5)
+Iteration: 40000 / 100000 [ 40%]  (Warmup) (Chain 4)
+Iteration: 80000 / 100000 [ 80%]  (Sampling) (Chain 7)
+Iteration: 80000 / 100000 [ 80%]  (Sampling) (Chain 6)
+Iteration: 40000 / 100000 [ 40%]  (Warmup) (Chain 0)
+Iteration: 80000 / 100000 [ 80%]  (Sampling) (Chain 1)
+Iteration: 90000 / 100000 [ 90%]  (Sampling) (Chain 2)
+Iteration: 90000 / 100000 [ 90%]  (Sampling) (Chain 3)
+Iteration: 90000 / 100000 [ 90%]  (Sampling) (Chain 5)
+Iteration: 90000 / 100000 [ 90%]  (Sampling) (Chain 7)
+Iteration: 90000 / 100000 [ 90%]  (Sampling) (Chain 6)
+Iteration: 90000 / 100000 [ 90%]  (Sampling) (Chain 1)
+Iteration: 100000 / 100000 [100%]  (Sampling) (Chain 2)
+# 
+#  Elapsed Time: 2.7 seconds (Warm-up)
+#                2.5 seconds (Sampling)
+#                5.2 seconds (Total)
+# 
+Iteration: 100000 / 100000 [100%]  (Sampling) (Chain 3)
+# 
+#  Elapsed Time: 2.69 seconds (Warm-up)
+#                2.56 seconds (Sampling)
+#                5.25 seconds (Total)
+# 
+Iteration: 100000 / 100000 [100%]  (Sampling) (Chain 5)
+# 
+#  Elapsed Time: 2.69 seconds (Warm-up)
+#                2.65 seconds (Sampling)
+#                5.34 seconds (Total)
+# 
+Iteration: 50000 / 100000 [ 50%]  (Warmup) (Chain 4)
+Iteration: 50001 / 100000 [ 50%]  (Sampling) (Chain 4)
+Iteration: 100000 / 100000 [100%]  (Sampling) (Chain 7)
+# 
+#  Elapsed Time: 2.69 seconds (Warm-up)
+#                2.67 seconds (Sampling)
+#                5.36 seconds (Total)
+# 
+Iteration: 100000 / 100000 [100%]  (Sampling) (Chain 6)
+# 
+#  Elapsed Time: 2.67 seconds (Warm-up)
+#                2.7 seconds (Sampling)
+#                5.37 seconds (Total)
+# 
+Iteration: 50000 / 100000 [ 50%]  (Warmup) (Chain 0)
+Iteration: 50001 / 100000 [ 50%]  (Sampling) (Chain 0)
+Iteration: 100000 / 100000 [100%]  (Sampling) (Chain 1)
+# 
+#  Elapsed Time: 2.7 seconds (Warm-up)
+#                2.93 seconds (Sampling)
+#                5.63 seconds (Total)
+# 
+Iteration: 60000 / 100000 [ 60%]  (Sampling) (Chain 0)
+Iteration: 60000 / 100000 [ 60%]  (Sampling) (Chain 4)
+Iteration: 70000 / 100000 [ 70%]  (Sampling) (Chain 0)
+Iteration: 70000 / 100000 [ 70%]  (Sampling) (Chain 4)
+Iteration: 80000 / 100000 [ 80%]  (Sampling) (Chain 0)
+Iteration: 80000 / 100000 [ 80%]  (Sampling) (Chain 4)
+Iteration: 90000 / 100000 [ 90%]  (Sampling) (Chain 0)
+Iteration: 90000 / 100000 [ 90%]  (Sampling) (Chain 4)
+Iteration: 100000 / 100000 [100%]  (Sampling) (Chain 0)
+# 
+#  Elapsed Time: 2.72 seconds (Warm-up)
+#                2.64 seconds (Sampling)
+#                5.36 seconds (Total)
+# 
+Iteration: 100000 / 100000 [100%]  (Sampling) (Chain 4)
+# 
+#  Elapsed Time: 2.67 seconds (Warm-up)
+#                2.88 seconds (Sampling)
+#                5.55 seconds (Total)
+# 
+Inference for Stan model: anon_model_97bf4e58a610a19c379ae41f75bc9d35.
+8 chains, each with iter=100000; warmup=50000; thin=1; 
+post-warmup draws per chain=50000, total post-warmup draws=400000.
+
+           mean se_mean     sd   2.5%    25%    50%    75%  97.5%  n_eff   Rhat
+k[0]       0.08  1.4e-4   0.06   0.01   0.04   0.07   0.11   0.23 189390    1.0
+k[1]       0.95    0.02   1.36   0.14   0.39   0.64   1.03   3.76   3000    1.0
+theta[0]  58.86    0.16  74.27   1.46  11.01  31.33  77.73 268.45 207032    1.0
+theta[1]  53.44    0.15  72.86   0.82   7.64  25.67  69.83 260.29 221969    1.0
+theta[2]  91.65     0.2  96.09   1.61  23.84  61.13 126.66 352.36 229755    1.0
+lp__      14.41  5.0e-3   1.55  10.56  13.64  14.73  15.54  16.47  95011    1.0
+
+Samples were drawn using NUTS at Fri Apr 14 12:55:53 2017.
+For each parameter, n_eff is a crude measure of effective sample size,
+and Rhat is the potential scale reduction factor on split chains (at 
+convergence, Rhat=1).
