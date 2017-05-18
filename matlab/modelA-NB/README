@@ -1,0 +1,29 @@
+README
+
+Written by Alex Tong
+April 25 2016
+
+modelA-NB
+
+modelA of naive bayes type.
+
+this model consists of 4 levels as below
+
+p_1 p_2 p_3 ... p_n
+ \/
+m_1 m_2 m_3 ... m_m
+ ^
+v_1 v_2 v_3 ... v_k
+ ^
+x_1 ... x_n
+
+Evidence nodes are unconfirmed X nodes with size = m, the number of metabolites. Soft evidence is provided and m_1 ... m_m are calculated based on this evidence and prior distributions on p_1 ... p_n
+
+
+v_i is true iff any parent node (only unconfirmed) evaluates to i
+
+m_i is true iff any parent is true
+
+p_i starts with an initial .5 .5 distribution.
+
+
