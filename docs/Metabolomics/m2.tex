@@ -1,0 +1,98 @@
+\documentclass[11pt]{article}
+
+% -- Semantics stuff
+%     I defined a couple of special commands (see examples in the text below) to make
+%     writing inference rules and judgements easier.
+\newcommand{\br}[1]{\langle #1 \rangle}
+\def\Yields{\Downarrow}
+
+% -- Page size
+\textheight     9.0truein
+\textwidth      6.5truein
+\topmargin     -0.5truein
+\oddsidemargin  +0.0truein
+\evensidemargin +0.0truein
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage[mathscr]{euscript}
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\renewcommand{\theenumi}{\roman{enumi}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+
+% -- Document title (appears at top)
+\title{Bayesian Model for Metabolite Identification}
+\author{Alex Tong}
+\begin{document}
+\maketitle
+
+\section {Poisson Model 1}
+Definitions
+\begin{itemize}
+    \item $p_m$: probability of observation on metabolite m, $p_m \in [0,1]$
+\end{itemize}
+Parameters
+\begin{itemize}
+    \item $a_p \sim Gamma(*,*)$
+    \item $\epsilon = 1.0\times10^{-4}$
+    \item $b_{p,m} \sim Gamma(a_p, 1)$
+    \item $\beta_m \leftarrow \sum_p b_{p,m}$
+    \item $\gamma_m \sim Bernoulli(1 - e^{-\beta_m})$
+\end{itemize}
+Original Potential Function\\
+$f(m,\epsilon) = \begin{cases}
+ p_m * (1-e^{-\beta_m}) & \text{ if } m \in Evidence \\ 
+ \epsilon * e ^ {-\beta_m}& \text{ else}
+\end{cases}$
+\\\\
+Modified Potential Function \\
+$y(m) = 1 - e^{-\beta_m} \\
+\alpha = \frac{1}{1 - p_m}\\
+g(m,\epsilon) = \begin{cases}
+ y(m) & \text{ if } m \in Evidence \\ 
+ (1 - y(m)) * y(m) ^ {\alpha - 1} &\text{ elif } m \in SoftEvidence\\
+ \epsilon * e ^ {-\beta_m}& \text{ else}
+\end{cases}$\\
+The soft evidence portion of $g(m, \epsilon)$ is proportional to a beta distribution pdf on $y(m)$ with $\alpha = \frac{1}{1 - p_m}, \beta = 2$. These parameter settings are based on the fact that we would like $g(m, \epsilon)$ to be maximal at $p_m$. \\
+$$\begin{align*}
+p_m &= \frac{\alpha - 1}{\alpha + \beta - 2} \\ 
+\beta &= 2 \\ 
+p_m &= \frac{\alpha - 1}{\alpha} \\
+\alpha &=  \frac{1}{1 - p_m}
+\end{align*}$$
+
+\section{Questions}
+\begin{itemize}
+    \item Would it be beneficial to normalize $g(m, \epsilon) \text{ where } m \in SoftEvidence$? \\
+    $B(\alpha, \beta) = \frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha + \beta)} \\
+    g(m,\epsilon) = \begin{cases}
+ y(m) & \text{ if } m \in Evidence \\ 
+ \frac{(1 - y) * y ^ {\alpha - 1}}{B(\alpha, \beta)} &\text{ elif } m \in SoftEvidence\\
+ \epsilon * e ^ {-\beta_m}& \text{ else}
+\end{cases}$\\
+\end{itemize}
+
+
+\end{document}
